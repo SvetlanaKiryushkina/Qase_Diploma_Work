@@ -20,7 +20,7 @@ public class ModalCreateProject {
 
     RadioButton radioButton = new RadioButton();
 
-    public ModalCreateProject waitForModal() {
+    public ModalCreateProject openModalCreate() {
         $(byText(CREATEE_NEW_PROJECT_BUTTON)).click();
         $(byText(MODAL_TITLE_TEXT)).shouldBe(visible);
         return this;

@@ -1,0 +1,61 @@
+package tests.ui;
+
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
+public class UIProjectTest extends UIBaseTest {
+
+    @Test(testName = "Проверка входа с валидными логином/паролем")
+    public void checkAuthPositive() {
+        loginPage.openPage();
+        loginPage.login(user, password);
+        projectPage.waitTillOpened();
+    }
+
+    @Test(testName = "Проверка входа с пустым паролем")
+    public void checkAuthNegative() {
+        loginPage.openPage()
+                .login(user, "");
+        loginPage.checkErrorMessage("This field is required");
+        assertEquals(loginPage.getErrorMessage(), "This field is required");
+    }
+
+    @Test(testName = "Проверка создания нового проекта",
+            description = "Проверка создания нового проекта")
+    public void checkCreateProject() {
+        loginPage.openPage()
+                .login(user, password);
+        projectPage.waitTillOpened();
+        modalCreateProject.openModalCreate();
+        modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
+                "Public");
+        modalCreateProject.clickCreate();
+    }
+
+    @Test(testName = "Проверка удаления созданного проекта")
+    public void checkDeleteProject() {
+        loginPage.openPage()
+                .login(user, password);
+        projectPage.waitTillOpened();
+        modalCreateProject.openModalCreate();
+        modalCreateProject.fillProjectDetails("Test for delete", "Test", "Test Test",
+                "Public");
+        modalCreateProject.clickCreate();
+        projectPage.openPage();
+        projectPage.deleteProject("Test for delete");
+    }
+
+    @Test(testName = "Проверка перехода на страницу создания тест-кейса")
+    public void checkOpenPageCreateTestCase(){
+        loginPage.openPage()
+                .login(user, password);
+        projectPage.waitTillOpened();
+        modalCreateProject.openModalCreate();
+        modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
+                "Public");
+        modalCreateProject.clickCreate();
+        projectNewPage.clickCreateTestButton();
+        projectNewPage.isOpenedPage();
+    }
+}

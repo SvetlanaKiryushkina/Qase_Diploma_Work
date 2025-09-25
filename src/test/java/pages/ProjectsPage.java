@@ -23,12 +23,6 @@ public class ProjectsPage {
         return this;
     }
 
-    public void createProject(String project) {
-        $(byText(CREATEE_NEW_PROJECT_BUTTON)).click();
-        $(PROJECT_NAME_CSS).setValue(project);
-        $(byText("Create project")).click();
-    }
-
     public void deleteProject(String project) {
         $(byText(project))
                 .ancestor("tr")

@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -8,16 +8,19 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.ModalCreateProject;
+import pages.ProjectNewPage;
 import pages.ProjectsPage;
+import listners.PropertyReader;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class BaseTest {
+public class UIBaseTest {
 
     LoginPage loginPage;
     ProjectsPage projectPage;
     ModalCreateProject modalCreateProject;
-    String user = System.getProperty("user",PropertyReader.getProperty("user"));
+    ProjectNewPage projectNewPage;
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
     String password = System.getProperty("password",PropertyReader.getProperty("password"));
 
     @BeforeMethod
@@ -36,6 +39,7 @@ public class BaseTest {
         loginPage = new LoginPage();
         projectPage = new ProjectsPage();
         modalCreateProject = new ModalCreateProject();
+        projectNewPage = new ProjectNewPage();
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
