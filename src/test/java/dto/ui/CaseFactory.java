@@ -7,9 +7,9 @@ public class CaseFactory {
     static Faker faker = new Faker();
 
     public static Case getTestCase(String status, String suite, String severity, String priority,
-                             String type, String layer, String isFlaky, String milestone,
-                             String behavior, String automationStatus, String toBeAutomated,
-                             String mutedCase){
+                                   String type, String layer, String isFlaky, String milestone,
+                                   String behavior, String automationStatus, String toBeAutomated,
+                                   String mutedCase) {
         Faker faker = new Faker();
         return new Case(
                 faker.lorem().sentence(4),

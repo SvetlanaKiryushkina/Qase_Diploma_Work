@@ -17,8 +17,8 @@ public class ProjectsPage {
     private final String DELETE_BUTTON_XPATH = "//span[text()='Delete project']";
     private final String REMOVE_BUTTON_CSS = "[data-testid=remove]";
     private final String MENU_PROJECT_BUTTON = "button[aria-label='Open action menu']";
-    private String PROJECTS_URL = "/projects";
     private final String NAME_PROJECT = "//a[text() = 'ShareLane Test']";
+    private final String PROJECTS_URL = "/projects";
 
     @Step("Открытие страницы с проектами")
     public ProjectsPage openPage() {
@@ -69,7 +69,7 @@ public class ProjectsPage {
     }
 
     @Step("Переход на страницу проекта")
-    public RepositoryPage openProject (String nameProject){
+    public RepositoryPage openProject(String nameProject) {
         $x(NAME_PROJECT).click();
         return new RepositoryPage();
     }

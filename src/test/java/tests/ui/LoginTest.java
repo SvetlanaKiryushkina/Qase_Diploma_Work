@@ -29,6 +29,6 @@ public class LoginTest extends BaseTest {
         loginPage.openPage()
                 .login("", "123");
         loginPage.checkErrorMessage("This field is required");
-        assertEquals(loginPage.getLoginErrorMessage(),"This field is required");
+        assertEquals(loginPage.getLoginErrorMessage(), "This field is required");
     }
 }

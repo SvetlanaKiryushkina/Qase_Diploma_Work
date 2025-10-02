@@ -16,11 +16,11 @@ public class BaseTest {
     LoginPage loginPage;
     ProjectsPage projectPage;
     ModalCreateProjectPage modalCreateProject;
-    RepositoryPage projectNewPage;
+    RepositoryPage repositoryPage;
     ProjectsPage projectsPage;
     CreateTestCasePage createTestCasePage;
     String user = System.getProperty("user", PropertyReader.getProperty("user"));
-    String password = System.getProperty("password",PropertyReader.getProperty("password"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @BeforeMethod
     public void setUp() {
@@ -38,7 +38,7 @@ public class BaseTest {
         loginPage = new LoginPage();
         projectPage = new ProjectsPage();
         modalCreateProject = new ModalCreateProjectPage();
-        projectNewPage = new RepositoryPage();
+        repositoryPage = new RepositoryPage();
         createTestCasePage = new CreateTestCasePage();
         projectsPage = new ProjectsPage();
 

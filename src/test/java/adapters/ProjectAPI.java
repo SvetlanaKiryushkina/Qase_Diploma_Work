@@ -32,7 +32,7 @@ public class ProjectAPI extends BaseAPI {
     }
 
     // Вспомогательный метод для получения RequestSpecification
-    private RequestSpecification getRequestSpec() {
+    public RequestSpecification getRequestSpec() {
         return super.getSpec(); // вызываем из базового класса
     }
 }

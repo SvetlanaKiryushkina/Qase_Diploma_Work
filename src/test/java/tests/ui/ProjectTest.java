@@ -4,8 +4,6 @@ import dto.ui.Case;
 import dto.ui.CaseFactory;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-
 public class ProjectTest extends BaseTest {
 
     @Test(testName = "Проверка создания нового проекта",
@@ -34,7 +32,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test(testName = "Проверка перехода на страницу создания тест-кейса")
-    public void checkOpenPageCreateTestCase(){
+    public void checkOpenPageCreateTestCase() {
         loginPage.openPage()
                 .login(user, password);
         projectPage.waitTillOpened();
@@ -42,12 +40,12 @@ public class ProjectTest extends BaseTest {
         modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
                 "Public");
         modalCreateProject.clickCreate();
-        projectNewPage.clickCreateTestButton();
-        projectNewPage.isOpenedPage();
+        repositoryPage.clickCreateTestButton();
+        repositoryPage.isOpenedPage();
     }
 
     @Test
-    public void test(){
+    public void test() {
         loginPage.openPage()
                 .login(user, password);
         projectPage.waitTillOpened();
@@ -56,8 +54,8 @@ public class ProjectTest extends BaseTest {
 
     @Test
     public void test2() {
-        Case testCase = CaseFactory.getTestCase("a","ak","au","au","ua","df",
-                "df","fddfv","rdgd","sfs","sfr","ergr");
+        Case testCase = CaseFactory.getTestCase("a", "ak", "au", "au", "ua", "df",
+                "df", "fddfv", "rdgd", "sfs", "sfr", "ergr");
         loginPage.openPage()
                 .login(user, password);
         projectPage.waitTillOpened();
@@ -70,11 +68,12 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test
-    public void test3(){
+    public void test3() {
         loginPage.openPage()
                 .login(user, password);
         projectsPage.waitTillOpened();
         projectsPage.openProject("ShareLane Test");
-        projectPage.waitTillOpened();
+        repositoryPage.isOpenedPage();
+        repositoryPage.addFilter();
     }
 }

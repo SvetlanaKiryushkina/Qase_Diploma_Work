@@ -1,9 +1,5 @@
 package wrappers;
 
-import com.codeborne.selenide.SelenideElement;
-
-import static com.codeborne.selenide.Condition.text;
-
 public class DropDown {
 
     /*private final String BUTTON_PICKLIST = "//label[contains(text(),'%s')]/following-sibling::" +

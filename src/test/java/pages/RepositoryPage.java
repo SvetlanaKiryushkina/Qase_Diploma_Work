@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RepositoryPage {
 
     private final String CREATE_TEST_BTN_XPATH = "//*[@id='create-case-button']",
-            PAGE_TITLE_TEXT = "Create test case",
+            PAGE_TITLE_TEXT = "New test",
             SUITE_CREATE_BTN = "create-suite-button",
             CASE_CREATE_BTN = "create-case-button",
             ADD_FILTER_BTN_XPATH = "//button[@aria-label = 'Add filter']",
@@ -17,24 +17,24 @@ public class RepositoryPage {
             FILTER_BTN_CSS = "svg.svg-inline";
 
     @Step("Переход на страницу создания тест-кейса")
-    public CreateTestCasePage openCreateTestCase(){
+    public CreateTestCasePage openCreateTestCase() {
         open("case/TEST/create");
         return new CreateTestCasePage();
     }
 
-    public CreateTestCasePage clickCreateTestButton(){
+    public CreateTestCasePage clickCreateTestButton() {
         $x(CREATE_TEST_BTN_XPATH).click();
         return new CreateTestCasePage();
     }
 
-    public RepositoryPage isOpenedPage(){
+    public RepositoryPage isOpenedPage() {
         $(byText(PAGE_TITLE_TEXT)).shouldBe(Condition.visible);
         return this;
     }
 
     @Step("Выбор теста по фильтру")
-    public RepositoryPage addFilter(){
-
+    public RepositoryPage addFilter() {
+        $(FILTER_BTN_CSS).click();
         return this;
     }
 }

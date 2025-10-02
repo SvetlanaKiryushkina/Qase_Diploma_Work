@@ -8,9 +8,9 @@ public class BaseTest {
     ProjectAPI projectAPI;
     CaseAPI caseAPI;
 
-    public BaseTest() {
-        this.projectAPI = new ProjectAPI();
-        this.caseAPI = new CaseAPI();
+    {
+        projectAPI = new ProjectAPI();
+        caseAPI = new CaseAPI();
     }
 }
 
