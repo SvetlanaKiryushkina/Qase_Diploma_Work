@@ -1,5 +1,5 @@
 package tests.ui;
 
-public class CaseTest extends BaseTest{
+public class CaseTest extends BaseTest {
 
 }

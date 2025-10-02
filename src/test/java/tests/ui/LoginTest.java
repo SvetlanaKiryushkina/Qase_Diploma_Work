@@ -1,7 +1,7 @@
 package tests.ui;
 
-import listners.Retry;
 import org.testng.annotations.Test;
+import utils.Retry;
 
 import static org.testng.Assert.assertEquals;
 
