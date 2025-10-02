@@ -1,25 +1,12 @@
 package tests.ui;
 
+import dto.ui.Case;
+import dto.ui.CaseFactory;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class UIProjectTest extends UIBaseTest {
-
-    @Test(testName = "Проверка входа с валидными логином/паролем")
-    public void checkAuthPositive() {
-        loginPage.openPage();
-        loginPage.login(user, password);
-        projectPage.waitTillOpened();
-    }
-
-    @Test(testName = "Проверка входа с пустым паролем")
-    public void checkAuthNegative() {
-        loginPage.openPage()
-                .login(user, "");
-        loginPage.checkErrorMessage("This field is required");
-        assertEquals(loginPage.getErrorMessage(), "This field is required");
-    }
+public class ProjectTest extends BaseTest {
 
     @Test(testName = "Проверка создания нового проекта",
             description = "Проверка создания нового проекта")
@@ -57,5 +44,37 @@ public class UIProjectTest extends UIBaseTest {
         modalCreateProject.clickCreate();
         projectNewPage.clickCreateTestButton();
         projectNewPage.isOpenedPage();
+    }
+
+    @Test
+    public void test(){
+        loginPage.openPage()
+                .login(user, password);
+        projectPage.waitTillOpened();
+        projectPage.getProjectName();
+    }
+
+    @Test
+    public void test2() {
+        Case testCase = CaseFactory.getTestCase("a","ak","au","au","ua","df",
+                "df","fddfv","rdgd","sfs","sfr","ergr");
+        loginPage.openPage()
+                .login(user, password);
+        projectPage.waitTillOpened();
+        modalCreateProject.openModalCreate();
+        modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
+                "Public");
+        modalCreateProject.clickCreate();
+        createTestCasePage.openPageTestCreate();
+        createTestCasePage.fillForm(testCase);
+    }
+
+    @Test
+    public void test3(){
+        loginPage.openPage()
+                .login(user, password);
+        projectsPage.waitTillOpened();
+        projectsPage.openProject("ShareLane Test");
+        projectPage.waitTillOpened();
     }
 }

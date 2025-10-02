@@ -9,5 +9,5 @@ public class Result {
 
     @SerializedName("code")
     @Expose
-    public String code;
+    private String code;
 }

@@ -9,8 +9,8 @@ public class CreateProjectRs {
 
     @SerializedName("status")
     @Expose
-    public Boolean status;
+    private Boolean status;
     @SerializedName("result")
     @Expose
-    public Result result;
+    private Result result;
 }

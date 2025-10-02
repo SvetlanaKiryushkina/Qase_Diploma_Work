@@ -3,23 +3,22 @@ package tests.ui;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import listners.TestListener;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.LoginPage;
-import pages.ModalCreateProject;
-import pages.ProjectNewPage;
-import pages.ProjectsPage;
-import listners.PropertyReader;
+import org.testng.annotations.Listeners;
+import pages.*;
+import utils.PropertyReader;
 
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
-public class UIBaseTest {
+@Listeners(TestListener.class)
+public class BaseTest {
 
     LoginPage loginPage;
     ProjectsPage projectPage;
-    ModalCreateProject modalCreateProject;
-    ProjectNewPage projectNewPage;
+    ModalCreateProjectPage modalCreateProject;
+    RepositoryPage projectNewPage;
+    ProjectsPage projectsPage;
+    CreateTestCasePage createTestCasePage;
     String user = System.getProperty("user", PropertyReader.getProperty("user"));
     String password = System.getProperty("password",PropertyReader.getProperty("password"));
 
@@ -38,18 +37,22 @@ public class UIBaseTest {
 
         loginPage = new LoginPage();
         projectPage = new ProjectsPage();
-        modalCreateProject = new ModalCreateProject();
-        projectNewPage = new ProjectNewPage();
+        modalCreateProject = new ModalCreateProjectPage();
+        projectNewPage = new RepositoryPage();
+        createTestCasePage = new CreateTestCasePage();
+        projectsPage = new ProjectsPage();
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
         );
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDawn(){
        if (getWebDriver() != null){
            getWebDriver().quit();
        }
     }
+
+     */
 }

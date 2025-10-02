@@ -1,5 +1,5 @@
-package dto.api.adapters;
+package adapters;
 
 //описываем все методы, которые взаимодействуют с кейсами, создание изменение
-public class CaseAPI {
+public class CaseAPI extends BaseAPI {
 }

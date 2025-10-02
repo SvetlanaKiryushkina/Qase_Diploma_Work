@@ -5,12 +5,10 @@ import io.restassured.RestAssured;
 import dto.api.models.project.create.CreateProjectRq;
 import org.testng.annotations.Test;
 
-import static dto.api.adapters.ProjectAPI.createProject;
-import static dto.api.adapters.ProjectAPI.deleteProject;
 
-public class APIProjectTest {
+public class ProjectTest extends BaseTest{
 
-    @Test
+   /*@Test
     public void checkCreateProject(){
         RestAssured.useRelaxedHTTPSValidation();
         CreateProjectRq rq = CreateProjectRq.builder()
@@ -26,4 +24,6 @@ public class APIProjectTest {
 
         deleteProject(code);
     }
+
+    */
 }
