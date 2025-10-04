@@ -5,10 +5,10 @@
         <listener class-name="listners.TestListener"/>
         <listener class-name="listners.AnnotationTransformer"/>
     </listeners>
-    <test name="Thread#1">
+    <test name="Authorization">
         <classes>
-            <class name="tests.ui.ProjectTest">
+            <class name="tests.ui.LoginTest">
             </class>
         </classes>
-    </test> <!-- Test -->
+    </test>
 </suite>

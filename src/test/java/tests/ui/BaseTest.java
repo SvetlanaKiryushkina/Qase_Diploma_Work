@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.*;
 import utils.PropertyReader;
-//
+
 @Listeners(TestListener.class)
 public class BaseTest {
 
