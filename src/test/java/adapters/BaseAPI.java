@@ -10,10 +10,10 @@ import static io.restassured.RestAssured.given;
 
 public class BaseAPI {
 
-    protected final Gson gson;
-    private final String token = System.getProperty("API_TOKEN", PropertyReader.getProperty("API_TOKEN"));
+    protected Gson gson;
+    private final String TOKEN = System.getProperty("API_TOKEN", PropertyReader.getProperty("API_TOKEN"));
     private final String BASE_URI = System.getProperty("BASE_URI", PropertyReader.getProperty("BASE_URI"));
-    private final RequestSpecification spec;
+    private RequestSpecification spec;
 
     public BaseAPI() {
         this.gson = new GsonBuilder()
@@ -22,7 +22,7 @@ public class BaseAPI {
 
         this.spec = given()
                 .contentType(ContentType.JSON)
-                .header("Token", token)
+                .header("Token", TOKEN)
                 .log().all();
     }
 

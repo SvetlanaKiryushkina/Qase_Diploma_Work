@@ -12,7 +12,7 @@ public class ProjectTest extends BaseTest {
     public void checkCreateProject() {
         RestAssured.useRelaxedHTTPSValidation();
         CreateProjectRq rq = CreateProjectRq.builder()
-                .title("Name progect")
+                .title("Name project")
                 .code("NP")
                 .description("test")
                 .group("test")

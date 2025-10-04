@@ -2,14 +2,21 @@ name: Qase CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "page-object" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+    - cron: "0 10 * * 5"
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    env:
+      USER: ${{secrets.QA_USER}}
+      PASSWORD: ${{secrets.QA_PASSWORD}}
+      BASE_URL: ${{secrets.QA_BASE_URL}}
 
     steps:
     - name: Checkout
@@ -21,4 +28,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run tests
-      run: mvn clean test
+      run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD -DBASE_URL=$BASE_URL
