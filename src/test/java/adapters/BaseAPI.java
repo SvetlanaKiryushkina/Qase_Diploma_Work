@@ -12,8 +12,8 @@ public class BaseAPI {
 
     private final String TOKEN = System.getProperty("API_TOKEN", PropertyReader.getProperty("API_TOKEN"));
     private final String BASE_URI = System.getProperty("BASE_URI", PropertyReader.getProperty("BASE_URI"));
-    protected Gson gson;
     private final RequestSpecification spec;
+    protected Gson gson;
 
     public BaseAPI() {
         this.gson = new GsonBuilder()
@@ -24,10 +24,6 @@ public class BaseAPI {
                 .contentType(ContentType.JSON)
                 .header("Token", TOKEN)
                 .log().all();
-    }
-
-    public Gson getGson() {
-        return gson;
     }
 
     public RequestSpecification getSpec() {

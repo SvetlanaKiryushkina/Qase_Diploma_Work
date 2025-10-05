@@ -1,7 +1,14 @@
 package pages;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import wrappers.RadioButton;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -16,7 +23,8 @@ public class ModalCreateProjectPage {
             PROJECT_CODE_INPUT = "#project-code",
             DESCRIPTION_TEXTAREA = "#description-area",
             BUTTON_CREATE_TEXT = "Create project",
-            BUTTON_CANCEL_TEXT = "Cancel";
+            BUTTON_CANCEL_TEXT = "Cancel",
+            ERROR_MESSAGE_CODE = "";
 
     RadioButton radioButton = new RadioButton();
 
@@ -51,5 +59,20 @@ public class ModalCreateProjectPage {
     public ProjectsPage clickCancel() {
         $(byText(BUTTON_CANCEL_TEXT)).click();
         return new ProjectsPage();
+    }
+
+    public void checkAlertMessage() {
+        WebDriver driver = WebDriverRunner.getWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Ждем появления alert
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+
+        // Проверяем текст
+        String alertText = alert.getText();
+        assert alertText.equals("Заполните это поле") : "Неверный текст алерта";
+
+        // Подтверждаем
+        alert.accept();
     }
 }

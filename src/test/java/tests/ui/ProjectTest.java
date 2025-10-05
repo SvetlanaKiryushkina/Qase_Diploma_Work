@@ -1,21 +1,30 @@
 package tests.ui;
 
-import dto.ui.Case;
-import dto.ui.CaseFactory;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 public class ProjectTest extends BaseTest {
 
     @Test(testName = "Проверка создания нового проекта",
-            description = "Проверка создания нового проекта")
+            description = "Проверка создания нового проекта",
+            groups = "smoke")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkCreateProject() {
-        loginPage.openPage()
-                .login(user, password);
-        projectPage.waitTillOpened();
-        modalCreateProject.openModalCreate();
-        modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
+        loginStep.auth(user, password);
+        projectStep.createNewProject("Test", "Test", "Test Test",
                 "Public");
-        modalCreateProject.clickCreate();
+    }
+
+    @Test(testName = "Создание нового проекта без названия",
+            description = "Создание нового проекта без названия")
+    @Severity(SeverityLevel.CRITICAL)
+    public void checkNewProjectWithoutTitle() {
+        loginStep.auth(user, password);
+        projectStep.createNewProject("", "Test", "Test Test",
+                "Public");
+
+
     }
 
     @Test(testName = "Проверка удаления созданного проекта")
@@ -31,7 +40,8 @@ public class ProjectTest extends BaseTest {
         projectPage.deleteProject("Test for delete");
     }
 
-    @Test(testName = "Проверка перехода на страницу создания тест-кейса")
+    @Test(testName = "Проверка перехода на страницу создания тест-кейса",
+            groups = "smoke")
     public void checkOpenPageCreateTestCase() {
         loginPage.openPage()
                 .login(user, password);
@@ -44,36 +54,20 @@ public class ProjectTest extends BaseTest {
         repositoryPage.isOpenedPage();
     }
 
-    @Test
+    /*@Test
     public void test() {
         loginPage.openPage()
                 .login(user, password);
         projectPage.waitTillOpened();
-        projectPage.getProjectName();
+        projectPage.deleteProjectsExceptShareLaneTest();
     }
 
-    @Test
-    public void test2() {
-        Case testCase = CaseFactory.getTestCase("a", "ak", "au", "au", "ua", "df",
-                "df", "fddfv", "rdgd", "sfs", "sfr", "ergr");
-        loginPage.openPage()
-                .login(user, password);
-        projectPage.waitTillOpened();
-        modalCreateProject.openModalCreate();
-        modalCreateProject.fillProjectDetails("Test", "Test", "Test Test",
-                "Public");
-        modalCreateProject.clickCreate();
-        createTestCasePage.openPageTestCreate();
-        createTestCasePage.fillForm(testCase);
-    }
+     */
 
-    @Test
-    public void test3() {
-        loginPage.openPage()
-                .login(user, password);
-        projectsPage.waitTillOpened();
-        projectsPage.openProject("ShareLane Test");
-        repositoryPage.isOpenedPage();
-        repositoryPage.addFilter();
+    @Test(testName = "Проверка аллерта")
+    public void test4() {
+        loginStep.auth(user, password);
+        projectStep.createNewProject("", "test", "test", "Private");
+        modalCreateProject.checkAlertMessage();
     }
 }

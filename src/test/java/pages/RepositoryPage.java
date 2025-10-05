@@ -17,14 +17,14 @@ public class RepositoryPage {
             FILTER_BTN_CSS = "svg.svg-inline";
 
     @Step("Переход на страницу создания тест-кейса")
-    public CreateTestCasePage openCreateTestCase() {
+    public CasePage openCreateTestCase() {
         open("case/TEST/create");
-        return new CreateTestCasePage();
+        return new CasePage();
     }
 
-    public CreateTestCasePage clickCreateTestButton() {
+    public CasePage clickCreateTestButton() {
         $x(CREATE_TEST_BTN_XPATH).click();
-        return new CreateTestCasePage();
+        return new CasePage();
     }
 
     public RepositoryPage isOpenedPage() {

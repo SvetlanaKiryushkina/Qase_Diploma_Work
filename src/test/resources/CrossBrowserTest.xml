@@ -5,22 +5,23 @@
         <listener class-name="listners.TestListener"/>
         <listener class-name="listners.AnnotationTransformer"/>
     </listeners>
-    <test name="Authorization">
+    <test name="Chrome">
         <classes>
             <class name="tests.ui.LoginTest">
             </class>
+            <parameter name="browser" value="chrome"/>
         </classes>
     </test>
-    <test name="SmokeGroup">
+    <test name="Firefox">
         <groups>
             <run>
                 <include name="smoke"/>
             </run>
         </groups>
         <classes>
-            <class name="tests.ui.LoginTest"/>
-            <class name="tests.ui.ProjectTest">
+            <class name="tests.ui.LoginTest">
             </class>
+            <parameter name="browser" value="firefox"/>
         </classes>
     </test>
 </suite>

@@ -15,7 +15,7 @@ import org.testng.ITestResult;
 @Log4j2
 public class Retry implements IRetryAnalyzer {
 
-    private static final int MAX_RETRY = 3;//количество повторений
+    private static final int MAX_RETRY = 2;//количество повторений
     private int attempt = 1;
 
     @Override
