@@ -54,16 +54,6 @@ public class ProjectTest extends BaseTest {
         repositoryPage.isOpenedPage();
     }
 
-    /*@Test
-    public void test() {
-        loginPage.openPage()
-                .login(user, password);
-        projectPage.waitTillOpened();
-        projectPage.deleteProjectsExceptShareLaneTest();
-    }
-
-     */
-
     @Test(testName = "Проверка аллерта")
     public void test4() {
         loginStep.auth(user, password);

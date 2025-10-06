@@ -40,56 +40,6 @@ public class ProjectsPage {
         return this;
     }
 
-    /*//Проверяет наличие проектов на странице и удаляет все, кроме "ShareLane Test".
-    public void deleteExtraProjects() {
-        List<String> projectNames = $$("tbody tr").stream()
-                .map(row -> row.find("a").getText())
-                .collect(Collectors.toList());
-
-        for (String projectName : projectNames) {
-            if (!projectName.equals("ShareLane Test")) {
-                deleteProject(projectName);
-            }
-        }
-    }
-
-    public void deleteProjectsExceptShareLaneTest() {
-        String excludedProjectName = "ShareLane Test";
-
-        // Получаем все элементы проектов по тексту
-        ElementsCollection projectElements = $$("//table//tr//td//a[contains(@href, '/project/')]");
-
-        for (SelenideElement projectElement : projectElements) {
-            String projectName = projectElement.getText();
-
-            if (!projectName.equals(excludedProjectName)) {
-                // Находим родительский tr
-                SelenideElement row = projectElement.closest("tr");
-
-                // Кликаем по кнопке меню внутри строки
-                row.find(MENU_PROJECT_BUTTON).click();
-
-                // Удаляем проект
-                $(REMOVE_BUTTON_CSS).click();
-                $x(DELETE_BUTTON_XPATH).click();
-            }
-        }
-    }
-
-    public List<String> getAllProjectNames() {
-        // Замените на актуальный селектор, который выбирает элементы проектов
-        ElementsCollection projectElements = $$("css-селектор-ваших-проектов");
-
-        // Получаем список названий проектов
-        List<String> projectNames = projectElements.stream()
-                .map(SelenideElement::getText)
-                .collect(Collectors.toList());
-
-        return projectNames;
-    }
-
-     */
-
     @Step("Переход на страницу проекта '{nameProject}'")
     public RepositoryPage openProject(String nameProject) {
         $x(String.format(NAME_PROJECT_XPATH, nameProject)).click();
