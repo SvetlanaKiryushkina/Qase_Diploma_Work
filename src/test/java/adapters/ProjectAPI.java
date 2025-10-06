@@ -13,7 +13,7 @@ public class ProjectAPI extends BaseAPI {
         return getRequestSpec()
                 .body(gson.toJson(rq))
                 .when()
-                .post("https://api.qase.io/v1/project/") // относительный путь
+                .post("project/") // относительный путь
                 .then()
                 .log().all()
                 .statusCode(200)
