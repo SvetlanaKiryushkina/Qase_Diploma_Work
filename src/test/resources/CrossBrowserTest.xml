@@ -7,8 +7,8 @@
     </listeners>
     <test name="Chrome">
         <classes>
-            <class name="tests.ui.LoginTest">
-            </class>
+            <class name="tests.ui.LoginTest"/>
+            <class name="tests.ui.CaseTest"/>
             <parameter name="browser" value="chrome"/>
         </classes>
     </test>
@@ -19,8 +19,8 @@
             </run>
         </groups>
         <classes>
-            <class name="tests.ui.LoginTest">
-            </class>
+            <class name="tests.ui.LoginTest"/>
+            <class name="tests.ui.CaseTest"/>
             <parameter name="browser" value="firefox"/>
         </classes>
     </test>

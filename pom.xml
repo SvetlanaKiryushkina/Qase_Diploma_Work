@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.20.1</aspectj.version>
         <testing.version>7.11.0</testing.version>
-        <suiteXmlFile>src/</suiteXmlFile>
+        <suiteXmlFile>src/test/resources/SmokeTest.xml</suiteXmlFile>
         <allure.version>2.24.0</allure.version>
         <selenide.version>7.10.0</selenide.version>
         <aspectj.version>1.9.20.1</aspectj.version>
@@ -109,7 +109,7 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!--<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
+<!--                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
                     </suiteXmlFiles>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

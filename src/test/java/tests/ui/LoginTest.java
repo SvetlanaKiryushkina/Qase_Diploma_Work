@@ -10,13 +10,18 @@ import static org.testng.Assert.assertEquals;
 public class LoginTest extends BaseTest {
 
     @Test(testName = "Проверка входа с валидными логином/паролем",
+            description = "Проверка входа с валидными логином/паролем",
             groups = "smoke")
+    @Description("Проверка входа с валидными логином/паролем")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkAuthPositive() {
         loginStep.auth(user, password);
     }
 
     @Test(testName = "Проверка входа с пустым паролем",
-            description = "Проверка входа с пустым паролем", retryAnalyzer = Retry.class)
+            description = "Проверка входа с пустым паролем")
+    @Description("Проверка входа с пустым паролем")
+    @Severity(SeverityLevel.NORMAL)
     public void checkAuthNegativeNullPassword() {
         loginStep.enterCredentials(user, "");
         loginPage.checkErrorMessage("This field is required");
@@ -26,6 +31,7 @@ public class LoginTest extends BaseTest {
     @Test(testName = "Проверка входа с невалидным логином и паролем",
             description = "Проверка входа с с невалидным логином и паролем", retryAnalyzer = Retry.class)
     @Description("Проверка входа с с невалидным логином и паролем")
+    @Severity(SeverityLevel.NORMAL)
     public void checkAuthNegative() {
         loginStep.enterCredentials("test", "test");
         loginPage.checkError("Value 'test' does not match format email of type string");

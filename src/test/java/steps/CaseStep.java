@@ -10,7 +10,7 @@ public class CaseStep {
 
     public void createCase(Case testCase) {
         casePage.openPageTestCreate()
-                .fillForm(testCase);
+                .fillFormCreate(testCase);
         casePage.clickSave();
         casePage.getMessageCreate();
     }

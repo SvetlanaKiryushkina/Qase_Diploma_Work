@@ -37,7 +37,7 @@ public class BaseTest {
             Configuration.baseUrl = "https://app.qase.io";
             Configuration.timeout = 20000;
             Configuration.clickViaJs = true;
-            //Configuration.headless = true;//запуск тестов без открытия окна браузера
+            Configuration.headless = true;//запуск тестов без открытия окна браузера
             Configuration.browserSize = "1280x1280";
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximazed");

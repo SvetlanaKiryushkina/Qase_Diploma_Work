@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import pages.ModalCreateProjectPage;
 import pages.ProjectsPage;
 import pages.RepositoryPage;
@@ -11,6 +12,7 @@ public class ProjectStep {
     ModalCreateProjectPage modalCreateProjectPage = new ModalCreateProjectPage();
     RepositoryPage repositoryPage = new RepositoryPage();
 
+    @Step("Создание нового проекта")
     public void createNewProject(String projectName,
                                  String projectCode,
                                  String description,
@@ -20,6 +22,7 @@ public class ProjectStep {
                 .clickCreate();
     }
 
+    @Step("Открытие проекта по названию '{nameProject}'")
     public void openProject(String user, String password, String nameProject) {
         loginStep.auth(user, password);
         projectsPage.openProject(nameProject);
