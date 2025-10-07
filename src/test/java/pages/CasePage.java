@@ -40,7 +40,7 @@ public class CasePage {
 
     @Step("Заполнение формы создания тест-кейса")
     public void fillFormCreate(Case testCase) {
-        log.info("Create New Test Case");
+        log.info("Заполнение формы создания теста");
         new TextInput("Title").write(testCase.getTitle());
         new DropDown("Status").selectForNewCase(testCase.getStatus());
         new DropDown("Severity").selectForNewCase(testCase.getSeverity());
@@ -75,10 +75,11 @@ public class CasePage {
     }
 
     @Step("Удаление тест-кейса")
-    public void deleteCase() {
+    public CasePage deleteCase() {
         $x(ICON_DELETE_XPATH).click();
         $x(INPUT_FOR_DELETE_XPATH).setValue("CONFIRM");
         $x(BUTTON_DELETE_XPATH).click();
+        return this;
     }
 
     @Step("Редактирование тест-кейса")

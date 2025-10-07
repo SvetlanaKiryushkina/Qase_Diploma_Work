@@ -26,6 +26,7 @@ public class DropDown {
     }
 
     public void selectForEditCase(String option) {
+        log.info("Click field {}", label);
         $x(String.format(TEST, label)).click();
     }
 }

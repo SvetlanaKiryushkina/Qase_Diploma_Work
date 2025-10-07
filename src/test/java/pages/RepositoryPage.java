@@ -11,7 +11,6 @@ public class RepositoryPage {
     private final String CREATE_TEST_BTN_XPATH = "//*[@id='create-case-button']",
             PAGE_TITLE_TEXT = "New test",
             SUITE_CREATE_BTN = "create-suite-button",
-            CASE_CREATE_BTN = "create-case-button",
             ADD_FILTER_BTN_XPATH = "//button[@aria-label = 'Add filter']",
             INPUT_SEARCH_XPATH = "//*[@aria-label = 'Search']",
             FILTER_BTN_CSS = "svg.svg-inline";
@@ -36,5 +35,10 @@ public class RepositoryPage {
     public RepositoryPage addFilter() {
         $(FILTER_BTN_CSS).click();
         return this;
+    }
+
+    @Step("Нажать кнопку Suite")
+    public void clickSuite(){
+        $x(SUITE_CREATE_BTN).click();
     }
 }

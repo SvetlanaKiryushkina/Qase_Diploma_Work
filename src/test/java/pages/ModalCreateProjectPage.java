@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +17,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static data.Elements.CREATE_NEW_PROJECT_BUTTON;
 
+@Slf4j
 public class ModalCreateProjectPage {
 
     private final String MODAL_TITLE_TEXT = "Create new project",
@@ -29,6 +31,7 @@ public class ModalCreateProjectPage {
 
     @Step("Открытие модального окна, для создания проекта")
     public ModalCreateProjectPage openModalCreate() {
+        log.info("Открылось модальное окно для создания проекта");
         $(byText(CREATE_NEW_PROJECT_BUTTON)).click();
         $(byText(MODAL_TITLE_TEXT)).shouldBe(visible);
         return this;
@@ -39,6 +42,7 @@ public class ModalCreateProjectPage {
                                                      String projectCode,
                                                      String description,
                                                      String projectType) {
+        log.info("Заполнена форма для создания тест-кейса");
         openModalCreate();
         String radioType = radioButton.getRadioButtonXPathByLabel(projectType);
         $(PROJECT_NAME_INPUT).setValue(projectName);

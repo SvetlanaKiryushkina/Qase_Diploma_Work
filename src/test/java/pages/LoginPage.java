@@ -1,28 +1,36 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
+@Log4j2
 public class LoginPage {
 
-    private final String USER_FILED_CSS = "[name=email]";
-    private final String PASSWORD_FILED_XPATH = "//*[@name='password']";
-    private final String SING_IN_BATTON = "//span[text()='Sign in']";
-    private final String ERROR_MESSAGE_PASSWORD = "//input[@name='password']/ancestor::div//small";
-    private final String ERROR_MESSAGE_LOGIN = "//input[@name='email']/ancestor::div//small";
-    private final String ERROR_MESSAGE = "//*[@id='modals']/div/div[1]/span/span";
+    private final String USER_FILED_CSS = "[name=email]",
+            PASSWORD_FILED_XPATH = "//*[@name='password']",
+            SING_IN_BATTON = "//span[text()='Sign in']",
+            ERROR_MESSAGE_PASSWORD = "//input[@name='password']/ancestor::div//small",
+            ERROR_MESSAGE_LOGIN = "//input[@name='email']/ancestor::div//small",
+            ERROR_MESSAGE = "//*[@id='modals']/div/div[1]/span/span";
 
+    @Step("Открытие страницы авторизации")
     public LoginPage openPage() {
         open("/login");
         $x(SING_IN_BATTON).shouldBe(visible, Duration.ofSeconds(20));
+        log.info("Opening Login Page");
         return this;
     }
 
+    @Step("Авторизация {user} {password}")
     public ProjectsPage login(String user, String password) {
+        sleep(5000);
+        log.info("Log in with cred {}, {}", user, password);
         $(USER_FILED_CSS).setValue(user);
         $x(PASSWORD_FILED_XPATH).setValue(password).submit();
         return new ProjectsPage();
