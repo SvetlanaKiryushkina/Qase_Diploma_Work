@@ -23,8 +23,7 @@ public class ModalCreateProjectPage {
             PROJECT_CODE_INPUT = "#project-code",
             DESCRIPTION_TEXTAREA = "#description-area",
             BUTTON_CREATE_TEXT = "Create project",
-            BUTTON_CANCEL_TEXT = "Cancel",
-            ERROR_MESSAGE_CODE = "";
+            BUTTON_CANCEL_TEXT = "Cancel";
 
     RadioButton radioButton = new RadioButton();
 

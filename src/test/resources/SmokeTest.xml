@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Smoke Test Qase" parallel="tests">
+<suite thread-count="1" name="Smoke Test Qase" parallel="tests">
     <listeners>
         <listener class-name="listners.TestListener"/>
         <listener class-name="listners.AnnotationTransformer"/>
     </listeners>
-    <test name="Authorization">
+    <test name="UI Test">
         <classes>
             <class name="tests.ui.LoginTest">
             </class>
+            <class name="tests.ui.CaseTest">
+        </class>
         </classes>
     </test>
-    <test name="SmokeGroup">
-        <groups>
-            <run>
-                <include name="smoke"/>
-            </run>
-        </groups>
+    <test name="API Test">
         <classes>
-            <class name="tests.ui.LoginTest"/>
-            <class name="tests.ui.ProjectTest">
+            <class name="tests.api.ProjectTest">
             </class>
         </classes>
     </test>

@@ -4,18 +4,21 @@ import com.codeborne.selenide.Condition;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
     private final String USER_FILED_CSS = "[name=email]";
     private final String PASSWORD_FILED_XPATH = "//*[@name='password']";
+    private final String SING_IN_BATTON = "//span[text()='Sign in']";
     private final String ERROR_MESSAGE_PASSWORD = "//input[@name='password']/ancestor::div//small";
     private final String ERROR_MESSAGE_LOGIN = "//input[@name='email']/ancestor::div//small";
     private final String ERROR_MESSAGE = "//*[@id='modals']/div/div[1]/span/span";
 
     public LoginPage openPage() {
         open("/login");
+        $x(SING_IN_BATTON).shouldBe(visible, Duration.ofSeconds(20));
         return this;
     }
 
@@ -31,7 +34,7 @@ public class LoginPage {
 
     public void checkError(String error) {
         $x(ERROR_MESSAGE)
-                .shouldBe(Condition.visible, Duration.ofSeconds(10))
+                .shouldBe(visible, Duration.ofSeconds(10))
                 .shouldHave(Condition.text(error));
     }
 
