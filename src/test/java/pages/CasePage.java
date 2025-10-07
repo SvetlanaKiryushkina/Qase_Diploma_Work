@@ -71,11 +71,13 @@ public class CasePage {
 
     @Step("Выбор тест-кейса из перечня")
     public void checkBox(String nameCase) {
+        log.info("Выбран чек бокс напротив теста", nameCase);
         $x(String.format(CHECK_BOX_CASE, nameCase)).click();
     }
 
     @Step("Удаление тест-кейса")
     public CasePage deleteCase() {
+        log.info("Удаление тест-кейса");
         $x(ICON_DELETE_XPATH).click();
         $x(INPUT_FOR_DELETE_XPATH).setValue("CONFIRM");
         $x(BUTTON_DELETE_XPATH).click();
