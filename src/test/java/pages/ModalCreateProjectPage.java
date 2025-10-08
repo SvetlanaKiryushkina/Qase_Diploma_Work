@@ -1,21 +1,15 @@
 package pages;
 
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import wrappers.RadioButton;
-
-import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static data.Elements.CREATE_NEW_PROJECT_BUTTON;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Slf4j
 public class ModalCreateProjectPage {
@@ -25,7 +19,8 @@ public class ModalCreateProjectPage {
             PROJECT_CODE_INPUT = "#project-code",
             DESCRIPTION_TEXTAREA = "#description-area",
             BUTTON_CREATE_TEXT = "Create project",
-            BUTTON_CANCEL_TEXT = "Cancel";
+            BUTTON_CANCEL_TEXT = "Cancel",
+            INPUT_ERROR_MESSAGE = "validationMessage";
 
     RadioButton radioButton = new RadioButton();
 
@@ -65,18 +60,16 @@ public class ModalCreateProjectPage {
         return new ProjectsPage();
     }
 
-    public void checkAlertMessage() {
-        WebDriver driver = WebDriverRunner.getWebDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void verifyValidationMessageForProjectName() {
+        String validationMessage = $(PROJECT_NAME_INPUT).getAttribute(INPUT_ERROR_MESSAGE);
+        log.info("Полученное сообщение об ошибке: {}", validationMessage);
 
-        // Ждем появления alert
-        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-
-        // Проверяем текст
-        String alertText = alert.getText();
-        assert alertText.equals("Заполните это поле") : "Неверный текст алерта";
-
-        // Подтверждаем
-        alert.accept();
+        try {
+            assertThat(validationMessage).matches("Заполните это поле\\.");
+            log.info("Сообщение соответствует ожидаемому");
+        } catch (AssertionError e) {
+            log.error("Сообщение не соответствует ожидаемому: {}", validationMessage);
+            throw e;
+        }
     }
 }

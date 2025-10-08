@@ -17,15 +17,17 @@ public class ProjectTest extends BaseTest {
                 "Public");
     }
 
-    //дописать проверку на пустое поле
     @Test(testName = "Создание нового проекта без названия",
             description = "Создание нового проекта без названия")
     @Description("Создание нового проекта без названия")
     @Severity(SeverityLevel.CRITICAL)
     public void checkNewProjectWithoutTitle() {
         loginStep.auth(user, password);
-        projectStep.createNewProject("", "Test", "Test Test",
-                "Public");
+        modalCreateProject.openModalCreate()
+                .fillProjectDetails("", "Test", "Test Test",
+                        "Public")
+                .clickCreate();
+        modalCreateProject.verifyValidationMessageForProjectName();
     }
 
     @Test(testName = "Проверка удаления созданного проекта",

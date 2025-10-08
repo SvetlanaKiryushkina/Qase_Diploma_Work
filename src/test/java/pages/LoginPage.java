@@ -27,7 +27,7 @@ public class LoginPage {
         return this;
     }
 
-    @Step("Авторизация {user} {password}")
+    @Step("Авторизация с валидным логином и паролем")
     public ProjectsPage login(String user, String password) {
         sleep(5000);
         log.info("Авторизация с валидным логином и паролем");
