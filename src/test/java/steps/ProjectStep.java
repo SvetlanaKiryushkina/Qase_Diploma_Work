@@ -20,6 +20,7 @@ public class ProjectStep {
         modalCreateProjectPage.openModalCreate()
                 .fillProjectDetails(projectName, projectCode, description, projectType)
                 .clickCreate();
+        repositoryPage.isOpenedPage();
     }
 
     @Step("Открытие проекта по названию '{nameProject}'")

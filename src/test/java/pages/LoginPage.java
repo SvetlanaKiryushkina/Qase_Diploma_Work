@@ -23,14 +23,14 @@ public class LoginPage {
     public LoginPage openPage() {
         open("/login");
         $x(SING_IN_BATTON).shouldBe(visible, Duration.ofSeconds(20));
-        log.info("Opening Login Page");
+        log.info("Открылась страница авторизации");
         return this;
     }
 
     @Step("Авторизация {user} {password}")
     public ProjectsPage login(String user, String password) {
         sleep(5000);
-        log.info("Log in with cred {}, {}", user, password);
+        log.info("Авторизация с валидным логином и паролем");
         $(USER_FILED_CSS).setValue(user);
         $x(PASSWORD_FILED_XPATH).setValue(password).submit();
         return new ProjectsPage();

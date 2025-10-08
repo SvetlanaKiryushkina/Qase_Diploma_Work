@@ -1,8 +1,10 @@
 package tests.ui;
 
+import adapters.ProjectAPI;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.RestAssured;
 import listners.TestListener;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
@@ -17,6 +19,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Listeners(TestListener.class)
 public class BaseTest {
 
+    protected ProjectAPI projectAPI;
     LoginPage loginPage;
     ProjectsPage projectPage;
     ModalCreateProjectPage modalCreateProject;
@@ -32,6 +35,8 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod(description = "Настройка браузера", alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
+        RestAssured.useRelaxedHTTPSValidation();
+        projectAPI = new ProjectAPI();
         if (browser.equalsIgnoreCase("chrome")) {
             Configuration.browser = "chrome";
             Configuration.baseUrl = "https://app.qase.io";
@@ -40,7 +45,7 @@ public class BaseTest {
             Configuration.headless = true;//запуск тестов без открытия окна браузера
             Configuration.browserSize = "1280x1280";
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximazed");
+            options.addArguments("--start-maximized","--ignore-certificate-errors");
             Configuration.browserCapabilities = options;
             Configuration.holdBrowserOpen = true;
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -49,6 +54,8 @@ public class BaseTest {
             Configuration.timeout = 50000;
             Configuration.clickViaJs = true;
         }
+
+        projectAPI.deleteAllProjectsExcept("ST");
 
         loginPage = new LoginPage();
         projectPage = new ProjectsPage();

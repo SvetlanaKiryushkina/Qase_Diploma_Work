@@ -26,6 +26,7 @@ public class RepositoryPage {
         return new CasePage();
     }
 
+    @Step("Открытие страницы проекта")
     public RepositoryPage isOpenedPage() {
         $(byText(PAGE_TITLE_TEXT)).shouldBe(Condition.visible);
         return this;

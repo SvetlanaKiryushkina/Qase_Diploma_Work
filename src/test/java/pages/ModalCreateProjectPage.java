@@ -55,6 +55,7 @@ public class ModalCreateProjectPage {
     @Step("Нажатие на кнопку Создать проект")
     public RepositoryPage clickCreate() {
         $(byText(BUTTON_CREATE_TEXT)).click();
+        log.info("Нажатие на кнопку Создать проект");
         return new RepositoryPage();
     }
 

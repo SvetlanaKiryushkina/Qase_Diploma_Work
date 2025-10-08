@@ -15,8 +15,6 @@ public class ProjectTest extends BaseTest {
         loginStep.auth(user, password);
         projectStep.createNewProject("Test", "Test", "Test Test",
                 "Public");
-        projectPage.openPage();
-        projectPage.deleteProject("Test");
     }
 
     //дописать проверку на пустое поле

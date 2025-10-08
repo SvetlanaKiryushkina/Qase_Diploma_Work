@@ -28,7 +28,7 @@ public class ProjectsPage {
         return this;
     }
 
-    @Step("Ожидаем появления на странице Create new project")
+    @Step("Ожидаем появления на странице 'Create new project'")
     public ProjectsPage waitTillOpened() {
         try {
             $(byText(CREATE_NEW_PROJECT_BUTTON)).shouldBe(visible, Duration.ofSeconds(60));
