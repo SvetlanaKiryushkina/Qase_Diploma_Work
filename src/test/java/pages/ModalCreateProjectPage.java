@@ -65,7 +65,7 @@ public class ModalCreateProjectPage {
         log.info("Полученное сообщение об ошибке: {}", validationMessage);
 
         try {
-            assertThat(validationMessage).matches("Заполните это поле\\.");
+            assertThat(validationMessage).matches("(?i)(Заполните это поле\\.|Please fill out this field\\.)");
             log.info("Сообщение соответствует ожидаемому");
         } catch (AssertionError e) {
             log.error("Сообщение не соответствует ожидаемому: {}", validationMessage);
