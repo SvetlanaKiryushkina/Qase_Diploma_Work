@@ -101,4 +101,3 @@ public class CasePage {
         $x(BUTTON_UPDATE_XPATH).click();
     }
 }
-

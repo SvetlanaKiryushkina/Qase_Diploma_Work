@@ -1,6 +1,5 @@
 package tests.api;
 
-import dto.api.models.caseAPI.CaseDetails;
 import dto.api.models.caseAPI.CreateCaseRq;
 import dto.api.models.caseAPI.CreateCaseRs;
 import io.qameta.allure.Description;
@@ -10,7 +9,6 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 import static org.testng.FileAssert.fail;
 
@@ -74,11 +72,11 @@ public class CaseTest extends BaseTest {
             description = "Удаление тест-кейса")
     @Description("Удаление тест-кейса")
     public void checkDeleteCase() {
-        caseAPI.deleteCase("ST", "41");
+        caseAPI.deleteCase("ST", "30");
 
         // Теперь проверяем, что кейса больше нет
         try {
-            caseAPI.getCaseById("ST", "41");
+            caseAPI.getCaseById("ST", "30");
             fail("Кейс всё ещё существует после удаления");
         } catch (AssertionError e) {
             // Ожидаем, что возникнет AssertionError из-за статуса 404
