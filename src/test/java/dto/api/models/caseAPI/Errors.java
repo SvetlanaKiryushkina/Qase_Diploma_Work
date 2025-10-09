@@ -4,13 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
-@Data
-public class CreateCaseRs {
+import java.util.List;
 
-    @SerializedName("status")
+@Data
+public class Errors {
+
+    @SerializedName("severity")
     @Expose
-    private Boolean status;
-    @SerializedName("result")
-    @Expose
-    private Result result;
+    private List<String> severity;
 }

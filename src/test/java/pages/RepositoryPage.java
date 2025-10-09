@@ -39,7 +39,7 @@ public class RepositoryPage {
     }
 
     @Step("Нажать кнопку Suite")
-    public void clickSuite(){
+    public void clickSuite() {
         $x(SUITE_CREATE_BTN).click();
     }
 }

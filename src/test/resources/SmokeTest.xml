@@ -10,12 +10,14 @@
             <class name="tests.ui.LoginTest">
             </class>
             <class name="tests.ui.CaseTest">
-        </class>
+            </class>
         </classes>
     </test>
     <test name="API Test">
         <classes>
             <class name="tests.api.ProjectTest">
+            </class>
+            <class name="tests.api.CaseTest">
             </class>
         </classes>
     </test>

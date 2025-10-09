@@ -5,12 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class CreateCaseRs {
+public class Result {
 
-    @SerializedName("status")
+    @SerializedName("id")
     @Expose
-    private Boolean status;
-    @SerializedName("result")
-    @Expose
-    private Result result;
+    private Integer id;
 }

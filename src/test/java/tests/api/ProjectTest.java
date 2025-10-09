@@ -1,15 +1,11 @@
 package tests.api;
 
-import adapters.ProjectAPI;
 import dto.api.models.project.create.CreateProjectRq;
 import dto.api.models.project.create.CreateProjectRs;
-import dto.api.models.project.get.GetProjectsRs;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 
 public class ProjectTest extends BaseTest {

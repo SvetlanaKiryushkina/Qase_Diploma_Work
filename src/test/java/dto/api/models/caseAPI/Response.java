@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class CreateCaseRs {
+public class Response {
 
-    @SerializedName("status")
+    @SerializedName("message")
     @Expose
-    private Boolean status;
-    @SerializedName("result")
+    private String message;
+    @SerializedName("errors")
     @Expose
-    private Result result;
+    private Errors errors;
 }

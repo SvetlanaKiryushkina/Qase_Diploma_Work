@@ -45,7 +45,7 @@ public class BaseTest {
             Configuration.headless = true;//запуск тестов без открытия окна браузера
             Configuration.browserSize = "1280x1280";
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--start-maximized","--ignore-certificate-errors");
+            options.addArguments("--start-maximized", "--ignore-certificate-errors");
             Configuration.browserCapabilities = options;
             Configuration.holdBrowserOpen = true;
         } else if (browser.equalsIgnoreCase("firefox")) {
